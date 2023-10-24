@@ -5,16 +5,15 @@
 
 taille = i = 0
 t = [1,2,3,2,5,6,30,20]
-element =30
+element = int(input("on recherche l'element : "))
 found = False
 taille=len(t)
-
-while(i<taille and found==False):
-    if t[i] ==element:
-        found = True
+position = -1
+for i in range(taille):
+    if t[i] == element:
+        position = i
+        break
     i+=1
 
-if found == True:
-    print("indice est ",i)
-else:
-    print("-1")
+print("position est ",position)
+

@@ -9,8 +9,6 @@ taille =ap=j=0
 taille = len(t)
 stop = False
 
-
-
 stock = 0
 print("taille : ",taille)
 
@@ -32,8 +30,5 @@ for i in range(taille):
         if j == taille -1 and stop == False:
             print(t[i],"   0")
         j+=1
-
-
-
 
 
