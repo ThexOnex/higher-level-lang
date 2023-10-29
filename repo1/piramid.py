@@ -16,7 +16,6 @@ while(i<L):
         print(" ",end='')
         #print(" ",end='')
         j+=2
-
         esp -= 1
     k=0
     while(k<etl):
