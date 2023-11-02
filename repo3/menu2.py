@@ -8,6 +8,7 @@ print("|pour modifier un element dans ce position taper ------------ 5|")
 i = int(input(": "))
 tai1=tai2=v=0
 bol = False
+
 if i==1:
     while(bol ==False):
         answer=input("entrer yes si l'element est un nbr sinon no : ")

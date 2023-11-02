@@ -7,8 +7,8 @@ d={'CIN':'EE111','NOM':'AAA','Age':20}
 # print(d.values())
 # print(d.items())
 
-# for k,v in d.items():
-#     print(k,v)
+for k in d.keys():
+    print(k)
 
 # d['ville']='marrakesh'#add a key and value
 # print(d)
@@ -39,25 +39,25 @@ d2={}
 #             print(Age[j])
 #         break
 
-matr=['26B1124','16B5678','26B91011']
-mark=['Dacia','Audi','BMW']
-prix=['10K','11K','20K']
+# matr=['26B1124','16B5678','26B91011']
+# mark=['Dacia','Audi','BMW']
+# prix=['10K','11K','20K']
 
-d2={'matr':matr,'mark':mark,'prix':prix}
+# d2={'matr':matr,'mark':mark,'prix':prix}
 
-bol =False
-# mark1 = input("Entrer la mark ")
-while(bol == False):
-    mark1 = input("Entrer la mark ")
-    if mark1==mark[0]:
-        print("le prix est",prix[0])
-        break
-    elif mark1==mark[1]:
-        print("le prix est",prix[1])
-        break
-    elif mark1==mark[2]:
-        print("le prix est",prix[2])
-        break
-    print("On n'a pas trouver la mark")
+# bol =False
+# # mark1 = input("Entrer la mark ")
+# while(bol == False):
+#     mark1 = input("Entrer la mark ")
+#     if mark1==mark[0]:
+#         print("le prix est",prix[0])
+#         break
+#     elif mark1==mark[1]:
+#         print("le prix est",prix[1])
+#         break
+#     elif mark1==mark[2]:
+#         print("le prix est",prix[2])
+#         break
+#     print("On n'a pas trouver la mark")
 
 
