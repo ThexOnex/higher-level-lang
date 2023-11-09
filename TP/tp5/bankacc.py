@@ -25,45 +25,50 @@ def ChangePass(pw):  # VALIDATING PASSWORD
 
 
 def Transaction(money, changes, mn1, mn2, mn3, old, new, acc2):
-    print("      ====================== YOUR LOGS ============================      ")
-    if changes == 1:
-        print("--------------------------------------------------------------------")
-        print("==========You sent ", acc2,
-              " This Amount of Money :", mn1, " DH ===========")
-        print("----------------------------------------------------------------------")
-        print("===         Money Left In Your account : ",
-              money, " DH           ===")
-        print("--------------------------------------------------------------------------")
-    elif changes == 2:
-        print("--------------------------------------------------------------------")
-        print("===========You added this amount of money to you ACCOUNT: ",
-              mn2, " DH =====")
-        print(
-            "------------------------------------------------------------------------------")
-        print("========== Money that you have at your bank acount Right Now",
-              money, " DH ==========")
-        print("---------------------------------------------------------------------------------")
-    elif changes == 3:
-        print("--------------------------------------------------------------------")
-        print("=== Amount of cash that you took from your ACCOUNT : ", mn3, " DH ====")
-        print("--------------------------------------------------------------------")
-        print("========== Money that you have at your bank acount Right Now",
-              money, " DH ==========")
-        print("--------------------------------------------------------------------")
-    elif changes == 5:
-        print("--------------------------------------------------------------------")
-        print("===YOU CHANGED YOUR PASSWORD FROM ", old, " To ", new)
+    if choice != 0:
+        print("      ====================== YOUR LOGS ============================      ")
+        if changes == 1:
+            print("--------------------------------------------------------------------")
+            print("==========You sent ", acc2,
+                  " This Amount of Money :", mn1, " DH ===========")
+            print(
+                "----------------------------------------------------------------------")
+            print("===         Money Left In Your account : ",
+                  money, " DH           ===")
+            print(
+                "--------------------------------------------------------------------------")
+        elif changes == 2:
+            print("--------------------------------------------------------------------")
+            print("===========You added this amount of money to you ACCOUNT: ",
+                  mn2, " DH =====")
+            print(
+                "------------------------------------------------------------------------------")
+            print("========== Money that you have at your bank acount Right Now",
+                  money, " DH ==========")
+            print(
+                "---------------------------------------------------------------------------------")
+        elif changes == 3:
+            print("--------------------------------------------------------------------")
+            print("=== Amount of cash that you took from your ACCOUNT : ",
+                  mn3, " DH ====")
+            print("--------------------------------------------------------------------")
+            print("========== Money that you have at your bank acount Right Now",
+                  money, " DH ==========")
+            print("--------------------------------------------------------------------")
+        elif changes == 5:
+            print("--------------------------------------------------------------------")
+            print("===YOU CHANGED YOUR PASSWORD FROM ", old, " To ", new)
 # ADMIN
 
 
-def searchNum(num):
+def searchNum(num):  # does the account exists
     for i in range(len(shifre)):
         if shifre[i] == num:
             return i
     return -1
 
 
-def founAcc(num, index):
+def founAcc(num, index):  # account profile
     print("FULL NAME                                  ", fullNames[index])
     print()
     print("--------------------------------------------------------------------")
@@ -77,20 +82,20 @@ def founAcc(num, index):
     print("--------------------------------------------------------------------")
 
 
-def validNumCreate(num):
+def validNumCreate(num):  # 14 digit number acc
     if len(num) != 14:
         return -1
     return 0
 
 
-def AddAccount(addmoney, number, name, pw):
+def AddAccount(addmoney, number, name, pw):  # adding the account infos
     Money.append(addmoney)
     shifre.append(number)
     fullNames.append(name)
     modpss.append(pw)
 
 
-def DeleteAcc(index):
+def DeleteAcc(index):  # deleting account infos
     del shifre[index]
     del Money[index]
     del modpss[index]
@@ -105,7 +110,7 @@ Money = [2000, 1200, 12030]
 stop = stop2 = False
 account = choice = accToSend = moneyToGrab = MoneyToAdd = MoneyToTake = OldPass = index2 = NewPass = 0
 
-while (stop == False):  # ADMIN
+while (stop == False):
     print("===================================Log in=========================================")
     print("=============USER ACCOUNT ========================= ADMIN ======================")
     print("If you want to Enter ADMIN MODE Enter 'admin' and for logining to Your ACCOUNT 'user'")
