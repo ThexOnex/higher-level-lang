@@ -19,7 +19,7 @@ def Myaccount(number, acc):  # is the account that we'll money to different that
 
 
 def ChangePass(pw):  # VALIDATING PASSWORD
-    if len(pw) != 4:
+    if len(pw) != 4 or isdigit(num) == -1:
         return -1
     return 0
 
@@ -58,9 +58,9 @@ def Transaction(money, changes, mn1, mn2, mn3, old, new, acc2):
         elif changes == 5:
             print("--------------------------------------------------------------------")
             print("===YOU CHANGED YOUR PASSWORD FROM ", old, " To ", new)
+
+
 # ADMIN
-
-
 def searchNum(num):  # does the account exists
     for i in range(len(shifre)):
         if shifre[i] == num:
@@ -83,7 +83,7 @@ def founAcc(num, index):  # account profile
 
 
 def validNumCreate(num):  # 14 digit number acc
-    if len(num) != 14:
+    if len(num) != 14 or isdigit(num) == -1:
         return -1
     return 0
 
@@ -102,23 +102,35 @@ def DeleteAcc(index):  # deleting account infos
     del fullNames[index]
 
 
+def isdigit(num):
+    digits = "1234567890"
+    for i in num:
+        for j in digits:
+            if i == j:
+                break
+        else:
+            return -1
+    return 0
+
+
 shifre = modpss = fullNames = []
-fullNames = ['SALAH EDDIN', 'SARA CHAKIR', 'LAILA LALAOUI']
-shifre = ['23456655866678', '34566549305646', '35675948390231']  # 14 num
-modpss = ['9784', '3456', '5656']
-Money = [2000, 1200, 12030]
-stop = stop2 = False
+fullNames = ['SALAH EDDIN', 'SARA CHAKIR', 'LAILA LALAOUI', 'blabla']
+shifre = ['23456655866678', '34566549305646',
+          '35675948390231', 'yahyahyahyahya']  # 14 num
+modpss = ['9784', '3456', '5656', '7777']
+Money = [2000, 1200, 12030, 16000]
+Notstop = True
 account = choice = accToSend = moneyToGrab = MoneyToAdd = MoneyToTake = OldPass = index2 = NewPass = 0
 
-while (stop == False):
+while (Notstop):
     print("===================================Log in=========================================")
     print("=============USER ACCOUNT ========================= ADMIN ======================")
     print("If you want to Enter ADMIN MODE Enter 'admin' and for logining to Your ACCOUNT 'user'")
-    while (not stop2):
+    while (Notstop):
         admin = input("========>   ")
         if admin == 'admin':
             adminpss = '2222'
-            while (not stop):
+            while Notstop:
                 isadminpss = input("ADMIN PASSWORD : ")
                 if adminpss != isadminpss:
                     print(" ⛔WRONG PASSWORD⛔")
@@ -132,29 +144,27 @@ while (stop == False):
             print("WRONG Try again")
     if admin == 'admin':
         break
-    while (not stop2):
+    while Notstop:
         number = input("Enter your acc number: ")
         Valid = validNum(number)  # i
-        if Valid >= 0:
-            print("This Account exist now enter its password")
-            index = Valid
-            break
-        else:
+        if Valid == -1:
             print(
                 "  =======================this Account doesn't try again=========================")
-    while (stop2 == False):
+            continue
+        print("This Account exist now enter its password")
+        index = Valid
+    while Notstop:
         mp = input("Password: ")
         Passed = validPss(mp, Valid)
-        if Passed == 0:
-            print(
-                "===========================WELCOME=======================================")
-            account = number
-            PassWrd = mp
-            break
-        else:
+        if Passed == -1:
             print(
                 "  =======================this Password is wrong=========================")
-    while (stop == False):
+            continue
+        print(
+            "===========================WELCOME=======================================")
+        account = number
+        PassWrd = mp
+    while Notstop:
         print("==================================MENU================================")
         print("======================================================================")
         print("---Money in the bank--------------------------------------------------")
@@ -171,45 +181,40 @@ while (stop == False):
         print("-CHANGE THE PASSWORD              ============>           5          -")
         Transaction(Money[index], choice, moneyToGrab,
                     MoneyToAdd, MoneyToTake, OldPass, NewPass, shifre[index2])
-        while (stop2 == False):
+        while Notstop:
             choice = int(input("Your choice is: "))
             if choice == 1:
-                while (stop2 == False):
+                while Notstop:
                     num = input(
                         "Enter the account that you want to send money: ")
-                    accToSend = Myaccount(num, account)
+                    NotMyAcc = Myaccount(num, account)
                     valid = validNum(num)
-                    index2 = Valid
-                    if valid >= 0 and accToSend == 0:
+                    index2 = valid
+                    if valid >= 0 and NotMyAcc == 0:
                         print(
                             "========                Acount found               ===========")
                         break
-                    elif accToSend != 0 or valid == -1:
+                    elif NotMyAcc != 0 or valid == -1:
                         print(
                             "========                Acount NON found            ===========")
                         print(
                             "=====================PLEASE TRY AGAIN==========================")
-                        if accToSend != 0:
+                        if NotMyAcc != 0:
                             print("you might have entered the same account number")
                         continue
-                while (stop2 == False):
+                while Notstop:
                     moneyToGrab = int(
                         input("Enter How Much You Want to send this user: "))
                     Result = Money[index] - moneyToGrab
-                    if Result >= 0:
-                        Money[index] = Result
-                        Money[index2] += moneyToGrab
-                        print(
-                            "=============     MONEY SENT SUCCESSFULY      ============")
-                        break
-                    elif Result < 0:
+                    if Result < 0:
                         print(
                             "The Amount Of Money That You Have Right Now is not enought")
                         print(
                             "===========           PLEASE TRY AGAIN           ==============")
                         continue
-                break
-            elif choice == 4:
+                    Money[index2] += moneyToGrab
+                    print("=============     MONEY SENT SUCCESSFULY      ============")
+                Money[index] -= moneyToGrab
                 break
             elif choice == 2:
                 MoneyToAdd = int(input("ENTER THE MONEY HERE ==========>:"))
@@ -218,7 +223,7 @@ while (stop == False):
                 print("MONEY ADDED SUCCESSFULLY")
                 break
             elif choice == 3:
-                while (stop2 == False):
+                while Notstop:
                     MoneyToTake = int(
                         input("TYPE HOW MUCH CASH YOU WANT TO TAKE FROM YOUR ACCOUNT : "))
                     Result = Money[index] - MoneyToTake
@@ -232,10 +237,10 @@ while (stop == False):
                         continue
                 break
             elif choice == 5:
-                while (not stop2):
+                while Notstop:
                     IsPassWrd = input("Enter Your Password ===>  : ")
                     if IsPassWrd == PassWrd:
-                        while (not stop2):
+                        while Notstop:
                             NewPass = input("Enter your new password")
                             r = ChangePass(NewPass)
                             if r == 0:
@@ -252,14 +257,16 @@ while (stop == False):
                         print("This is not your current password try again")
                         continue
                 break
+            elif choice == 4:  # EXIT
+                break
             else:
                 print("Enter only one of these numbers: 1, 2 and 3")
                 continue
-        if choice == 4:
+        if choice == 4:  # EXIT
             break
-    if choice == 4:
+    if choice == 4:  # EXIT
         break
-while (not stop and choice != 4):
+while (Notstop and choice != 4):
     print(" ----------------------------------------------------------------------------------")
     print("================================ HELLO ADMIN =======================================")
     print("       ⌕______________________________________________________________  search      ")
@@ -273,25 +280,18 @@ while (not stop and choice != 4):
     if choice == 1:
         print("Enter the account you want to search for")
         number = input("⌕_________________")
-        print("search phase started")
-        print("---------------------------searching %0")
-        print("---------------------------searching %10")
-        print("---------------------------searching %20")
+        print("search phase started 0%==---------------------")
         isFound = searchNum(number)
-        print("---------------------------searching %50")
-        print("---------------------------searching %80")
-        print("---------------------------searching %100")
-        print("SEARCH COMPLETED")
+        print("SEARCH COMPLETED 100%==========================---")
         if isFound == -1:
             print("THIS ACCOUNT DOESN'T EXIST ", number)
-        else:
-            print("=============✅  ACOUNT FOUND ✅===================")
-            founAcc(number, isFound)
-        continue
+            continue
+        print("=============✅  ACOUNT FOUND ✅===================")
+        founAcc(number, isFound)
     elif choice == 2:
         print("------------------------ CREATE AN ACCOUNT --------------------")
         print("---------------------------------------------------------------")
-        while (not stop):
+        while Notstop:
             number = input("ACCOUNT NUMBER =======> ")
             isExist = validNum(number)
             validnum = validNumCreate(number)
@@ -323,7 +323,7 @@ while (not stop and choice != 4):
         continue
     elif choice == 3:
         print("========================== REMOVING ACCOUNT ===========================")
-        while (not stop):
+        while Notstop:
             number = input("ACCOUNT =======> ")
             isExist = validNum(number)
             if isExist == -1:
@@ -338,7 +338,7 @@ while (not stop and choice != 4):
         break
     elif choice == 5:
         print(" =============================== SENDING MONEY TO AN ACCOUNT =========================")
-        while (not stop):
+        while Notstop:
             number = input("ACCOUNT =======> ")
             isExist = validNum(number)
             if isExist == -1:
@@ -353,7 +353,7 @@ while (not stop and choice != 4):
             continue
     elif choice == 6:
         print("========================= CHANGING ACCOUNT INFOS ==========================")
-        while (not stop):
+        while Notstop:
             number = input("ACCOUNT =======> ")
             isExist = validNum(number)
             if isExist == -1:
@@ -363,7 +363,7 @@ while (not stop and choice != 4):
             print("  to change its number --------------------------------1")
             print("  to change its names  --------------------------------2")
             print("  to change its password ------------------------------3")
-            while (not stop):
+            while Notstop:
                 choiceAD = int(input("YOUR CHOICE IS : "))
                 if choiceAD == 1:
                     num = input("NEW ACCOUNT NUMBER =======> ")
@@ -380,12 +380,12 @@ while (not stop and choice != 4):
                     print("                 ✅NAME CHANGES SUCCESSFULLY✅")
                     break
                 elif choiceAD == 3:
-                    while (not stop):
+                    while Notstop:
                         Pass = input("ENTER ACCOUNT PASSWORD : ")
                         if Pass != modpss[isExist]:
                             print("⛔ WRONG PASSWORD")
                             continue
-                        while (not stop):
+                        while Notstop:
                             NewPass = input("NEW PASSWORD =======> ")
                             r = ChangePass(NewPass)
                             if r == -1:
