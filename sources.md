@@ -4,3 +4,8 @@
 #Code with TJ
 leetcode
 w3school
+
+to do :
+Windev
+C#.net
+(java + Jdbc)

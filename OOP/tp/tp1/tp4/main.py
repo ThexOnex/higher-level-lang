@@ -1,0 +1,58 @@
+from produit import Produit
+from produitAli import ProduitAlimentaire
+from produitEle import ProduitElectronique
+from method import Method
+
+p1 = Produit("lipstick", 1, 1)
+p2 = Produit("mascara", 1, 1)
+p3 = Produit("bronzer", 1, 1)
+
+pa1 = ProduitAlimentaire("blow stickers", 1, 1, 2024, 8, 6)
+pa2 = ProduitAlimentaire("cups", 1, 1, 2050, 7, 2)
+
+pe1 = ProduitElectronique("blow dryer", 1, 1, 2)
+pe2 = ProduitElectronique("monitor", 1, 1, 15)
+listP = [p1, p2, p3, pa1, pa2, pe1, pe2]
+archive = []
+# p1.afficher()
+# pa1.afficher()
+# pe2.afficher()
+# p1.ajusterQuantite(7)
+# p1.afficher()
+# p2.chargerInfo()
+# p2.afficher()
+products = Method(listP, archive)
+products.chercherParMotCle(listP, "blow")
+# current = datetime.date(2023, 12, 18)
+# pa1.verificationDExpiration(current)
+# products.detectDouble()
+# products.fusionerDouble()
+# products.afficherList()
+# products.archiverUnProduit(2)
+# products.archiverUnProduit(5)
+# products.afficherProduitArchiver()
+# print("=====================================")
+# print(products.LePrixMoyen())
+# print(products.QuantiteTotalEnStock())
+
+# products.afficherList()
+# p2.promotionP(20)
+# pa2.promotionP(40)
+# pe1.promotionP(30)
+# products.afficherProduitEnPromotion()
+# products.surprimeProduit("blow dryer")
+# products.afficherList()
+# pa1.modifierInfo("modifie", 444, 444, 2030, 7, 6)
+# pa1.afficher()
+# products.trieProducts()
+# print("=====================================")
+# products.afficherList()
+# products.filtrer(ProduitElectronique)
+# products.rechercherParNom("stickers")
+# pa2.afficher()
+# pa2.chargerInfoAli()
+# pa2.afficher()
+# products.rechercherParNom("blabla")
+# pe2.afficher()
+# pe2.chargerInfoEle()
+# pe2.afficher()

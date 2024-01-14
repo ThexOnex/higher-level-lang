@@ -1,0 +1,44 @@
+**Exercice 2 **Gestion d'un Système de Réservation de Billets\*\*
+
+**Objectif :** Modéliser un système de réservation de billets avec des classes Python.
+
+**1. Créez une classe `Billet` :**
+
+- Attributs : `numero`, `prix`, `disponible` (booléen indiquant si le billet est disponible).
+
+**2. Créez une classe `Client` :**
+
+- Attributs : `nom`, `prenom`, `email`.
+
+**3. Créez une classe `Vol` :**
+
+- Attributs : `numero_vol`, `destination`, `date_depart`, `billets` (une liste pour stocker les billets disponibles).
+
+**4. Ajoutez une méthode à la classe `Vol` pour afficher tous les billets disponibles.**
+
+**5. Ajoutez une méthode à la classe `Vol` pour réserver un billet :**
+
+- Cette méthode prend un objet `Client` en paramètre et réserve un billet disponible pour ce client.
+
+**6. Ajoutez une méthode à la classe `Vol` pour afficher les détails du vol, y compris les billets réservés.**
+
+**7. Créez une classe `CompagnieAerienne` :**
+
+- Attributs : `nom`, `vols` (une liste pour stocker les vols).
+
+**8. Ajoutez une méthode à la classe `CompagnieAerienne` pour afficher tous les vols disponibles.**
+
+**9. Ajoutez une méthode à la classe `CompagnieAerienne` pour afficher les détails d'un vol, y compris les billets réservés.**
+
+**10. Créez quelques instances de `Billet`, `Client`, `Vol`, et `CompagnieAerienne`.**
+
+**11. Simulez des réservations de billets pour différents clients sur différents vols.**
+
+**12. Affichez les détails de chaque vol avec les billets réservés.**
+
+**Bonus (facultatif) :**
+
+- Ajoutez des fonctionnalités pour annuler une réservation.
+- Ajoutez des fonctionnalités pour rechercher des vols par destination ou date.
+- Gérez les tarifs en fonction de la classe du billet (par exemple, classe économique, classe affaires).
+- Ajoutez des fonctionnalités pour générer des rapports sur les ventes de billets.

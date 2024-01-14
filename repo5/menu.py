@@ -42,12 +42,20 @@ def tri(t):
     i = 0
     temp = 0
     for i in range((len(t))):
-        for j in range(i, len(t)):
-            if t[i] > t[j]:
-                temp = t[i]
-                t[i] = t[j]
-                t[j] = temp
-                break
+        for j in range(len(t)-1):
+            if t[j] > t[j+1]:
+                temp = t[j]
+                t[j] = t[j+1]
+                t[j+1] = temp
+    return t
+
+
+def reversed(t):  # 1 2 3 4   4 3 2 1
+    temp = 0
+    for i in range(int(len(t)/2)):
+        temp = t[i]
+        t[i] = t[len(t)-1-i]
+        t[len(t)-1-i] = temp
     return t
 
 
@@ -158,6 +166,20 @@ while (stop == False):
             else:
                 print("Taper yes ou no")
                 continue
+    elif choice == 7:
+        reversed(t)
+        print(t)
+        while (yes == False):
+            choice1 = input("voulez vous modifier une chose ? ")
+            if choice1 == 'yes':
+                break
+            elif choice1 == 'no':
+                stop = True
+                break
+            else:
+                print("Taper yes ou no")
+                continue
+
     else:
         print("========================Taper 1 ou 2 ou 3 ou 4 ou 5 ou 6======================================")
         print("===============================================================================================")
